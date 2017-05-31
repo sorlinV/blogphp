@@ -11,9 +11,10 @@
         $title = htmlspecialchars($_POST['title']);
         $text = htmlspecialchars($_POST['text']);
 
-        if (!isset($title) && !isset($text)) {
-            $file = fopen("$title.txt", "w");
+        if (isset($title) && isset($text)) {
+            $file = fopen("$title.txt", "w") or die("Unable to open file!");
             fwrite($file, $text);
+            fclose($file);
         }
     ?>
 </body>
